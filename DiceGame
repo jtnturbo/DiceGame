@@ -1,0 +1,187 @@
+// Mid Term Dice Game
+import java.util.Scanner;
+
+
+public class diceGame 
+{
+	public static void main( String[] args)
+	{
+		
+		Scanner input = new Scanner( System.in );
+		
+		
+		
+		int diceNum1 = 0;
+		String diceNumS1;
+		String userGuess;
+		int good_guessesCount;
+		int games_playedCount;
+		int evenGuesses = 0;
+		int odd_compNum = 0;
+		boolean go = true;
+		boolean run = true;
+		String guess_againResponse = null;
+		
+		
+		diceNum1 = 1 + (int)( Math.random() * 6);
+		
+		
+		good_guessesCount = 0;
+		games_playedCount = 0;
+		
+		
+		System.out.println( "Dice Game");
+		
+		
+		while( go == true )
+		{
+			
+			while( run )
+			{
+				diceNum1 = 1 + (int)( Math.random() * 6);
+				System.out.print( "\nGuess odd or even from dice roll: ");
+				userGuess = input.next();
+				
+				if(( userGuess.equals("odd") || ( userGuess.equals("even"))))
+				{
+				System.out.printf( "%s \"%d\"\n" , "Dice rolled a" , diceNum1);
+				
+				
+				switch( diceNum1)
+				{
+				case 1:
+					diceNumS1 = "odd";
+					odd_compNum++;
+					switch( userGuess.toLowerCase())
+					{
+					case "odd": System.out.println( "You guessed correctly" );
+					good_guessesCount++;
+					break;
+					case "even": System.out.println( "You guessed incorrectly" );
+					evenGuesses++;
+					break;
+					}
+					run = false;
+					break;
+				case 2:
+					diceNumS1 = "even";
+					switch( userGuess.toLowerCase())
+					{
+					case "odd": System.out.println( "You guessed incorrectly" );
+					break;
+					case "even": System.out.println( "You guessed correctly" );
+					good_guessesCount++;
+					evenGuesses++;
+					break;
+					}
+					run = false;
+					break;
+				case 3:
+					diceNumS1 = "odd";
+					odd_compNum++;
+					switch( userGuess.toLowerCase())
+					{
+					case "odd": System.out.println( "You guessed correctly" );
+					good_guessesCount++;
+					break;
+					case "even": System.out.println( "You guessed incorrectly" );
+					evenGuesses++;
+					break;
+					}
+					run = false;
+					break;
+				case 4:
+					diceNumS1 = "even";
+					switch( userGuess.toLowerCase())
+					{
+					case "odd": System.out.println( "You guessed incorrectly" );
+					break;
+					case "even": System.out.println( "You guessed correctly" );
+					good_guessesCount++;
+					evenGuesses++;
+					break;
+					}
+					run = false;
+					break;
+				case 5:
+					diceNumS1 = "odd";
+					odd_compNum++;
+					switch( userGuess.toLowerCase())
+					{
+					case "odd": System.out.println( "You guessed correctly" );
+					good_guessesCount++;
+					break;
+					case "even": System.out.println( "You guessed incorrectly" );
+					evenGuesses++;
+					break;
+					}
+					run = false;
+					break;
+				case 6:
+					diceNumS1 = "even";
+					switch( userGuess.toLowerCase())
+					{
+					case "odd": System.out.println( "You guessed incorrectly" );
+					
+					break;
+					case "even": System.out.println( "You guessed correctly" );
+					good_guessesCount++;
+					evenGuesses++;
+					break;
+					}
+					run = false;
+					break;	
+					
+					default:
+						run = false;
+						break;
+				
+			}
+				}
+			
+				else
+					{
+						System.out.println( "INVALID ENTRY! TRY AGAIN");
+						
+					}
+			}
+				
+				{
+					games_playedCount++;
+				}
+			
+				
+				if(run == false)
+				{
+						
+					    System.out.printf( "\n      %s %d" , "Games Played:" , games_playedCount );
+					   System.out.printf( "\n%s%d%s", "Winning Percentage: " , good_guessesCount*100/games_playedCount , "%");
+					   System.out.printf( "\n%s%d%s" , "Player Even Guesses Percentage: " , evenGuesses*100/games_playedCount , "%" );
+					   System.out.printf( "\n%s%d%s", "Dice Odd Number Percentage: " , odd_compNum*100/games_playedCount , "%" );
+					    
+			           System.out.print("\n\nWould you like to play again? (enter yes or no): ");
+					   guess_againResponse = input.next();
+					   
+				}
+				   		
+				if( guess_againResponse.equals("yes") )
+				{
+					run = true;
+				}
+				else if ( guess_againResponse.equals("no"))
+				{
+					go = false;
+					System.out.println( "Game over");
+				}
+				
+				else
+				{
+					System.out.println( "Invalid Response! Please enter yes or no");
+					games_playedCount--;
+				}
+				
+			
+			}
+	}
+
+	}
